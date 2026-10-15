@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+.sdk/
+.cache/
+.tools/
+artifacts/
+dist/
+.vs/
