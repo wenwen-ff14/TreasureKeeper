@@ -2,11 +2,25 @@
 
 繁中服 Dalamud API 13 插件。按寶物庫分類瀏覽掉落，勾選物品全域自動丟棄，不限所在地。支援分類、搜尋、一鍵勾選、全域預覽、自動補錄庫內取得物品與手動補充。另有寶圖快捷欄解讀及自動確認。輸入 `/tkeep` 開啟整理助手，`/tkeep stop` 停止丟棄；`/tmap` 開啟地圖工具。
 
+## 安裝（免自行編譯）
+
+在 Dalamud 設定（`/xlsettings`）的「實驗性／Experimental」頁找到「自訂套件庫／Custom Plugin Repositories」，新增並啟用以下網址，再儲存設定：
+
+```text
+https://raw.githubusercontent.com/wenwen-ff14/TreasureKeeper/main/pluginmaster.json
+```
+
+開啟插件安裝器（`/xlplugins`），重新整理後搜尋 **TreasureKeeper｜寶物庫整理助手**，按「安裝」。目前提供繁中服 Dalamud API 13、版本 **0.1.9.0**；之後可從同一插件庫更新。
+
+已編譯 ZIP 也可從 [GitHub Release](https://github.com/wenwen-ff14/TreasureKeeper/releases/tag/v0.1.9) 下載：[TreasureKeeper-0.1.9.0-api13.zip](https://github.com/wenwen-ff14/TreasureKeeper/releases/download/v0.1.9/TreasureKeeper-0.1.9.0-api13.zip)。手動載入時，將 ZIP 完整解壓至固定資料夾，再把 `TreasureKeeper.dll` 加入開發插件設定；一般安裝使用上方套件庫即可。
+
+若先前已透過開發插件載入 TreasureKeeper，先停用該開發項目，再從套件庫安裝，避免重複載入；保留原本的插件設定檔。
+
 ## 使用
 
 完整 G10 分庫、分類物品表見 [G10_ITEMS.md](docs/G10_ITEMS.md)，逐項 ID 與來源見 [g10-audit.json](docs/g10-audit.json)。0.1.9 已納入本次分享的神殿 53 種庫內取得紀錄，補足 19 項：14 種素材、4 種魔晶石及 1 種消耗品。神殿由 98 項增加到 117 項；其他來源清單維持原有項目。
 
-1. 原始碼建置與封裝方式見下方「建置與驗證」。解壓產生的 `dist/TreasureKeeper-0.1.9.0-api13.zip`，保留其中的兩個 DLL 與 JSON。將 `TreasureKeeper.dll` 的完整路徑加入 Dalamud 開發插件設定，啟用插件。
+1. 安裝後輸入 `/tkeep` 開啟整理助手；`/tmap` 開啟寶圖快捷解讀。
 2. 在左側選擇掉落來源，勾選要「丟棄」的物品；未勾選的保留，設定自動儲存。同一物品在所有清單共用勾選狀態，從任一清單取消便全域保留。
 3. 用分類、搜尋、背包持有或只看已勾選縮小列表，再按「勾選篩選結果」或「取消篩選勾選」。不設定篩選時，一鍵操作整個寶物庫。
 4. 開啟「全域待丟棄預覽」核對背包，再按「啟動全域自動丟棄」。主城、野外、寶物庫及其他副本均會處理所有清單中已勾選的物品。正在瀏覽哪個寶物庫不會限制執行範圍，G10 外場也不需另行啟動。
@@ -91,6 +105,8 @@
 ./scripts/Validate.ps1 -Preview
 ./scripts/Package.ps1
 ```
+
+`Package.ps1` 會產生已編譯安裝包、原始碼包與根目錄 `pluginmaster.json`，並核對 DLL 版本、API 13、安裝／更新連結及 ZIP 結構。發布時將安裝包上傳到對應版本的 GitHub Release，再更新 `pluginmaster.json`；公開下載驗證可執行 `./scripts/Verify-PluginRepository.ps1 -Online`。建置命令供開發者使用，一般玩家依上方「安裝」操作即可。
 
 離線 UI 預覽需要同版 `cimgui.dll`，輸出在 `artifacts/ui-preview/`。清單建置工具只讀本機遊戲資料；不需啟動遊戲：
 

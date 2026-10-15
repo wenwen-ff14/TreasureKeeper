@@ -24,7 +24,8 @@ try {
     Copy-Item -LiteralPath (Join-Path $root 'docs') -Destination $stage -Recurse
     $archive = Join-Path $dist "TreasureKeeper-$version-api13.zip"
     Compress-Archive -Path (Join-Path $stage '*') -DestinationPath $archive -Force
-    $sourceFiles = @('global.json','.gitignore','README.md','LICENSE.txt') | ForEach-Object { Join-Path $root $_ }
+    & (Join-Path $PSScriptRoot 'Prepare-PluginRepository.ps1') -PackagePath $archive
+    $sourceFiles = @('global.json','.gitignore','README.md','LICENSE.txt','pluginmaster.json') | ForEach-Object { Join-Path $root $_ }
     $sourceFiles += Get-ChildItem -Path (Join-Path $root 'TreasureKeeper'),(Join-Path $root 'TreasureKeeper.Core'),(Join-Path $root 'tools'),(Join-Path $root 'tests'),(Join-Path $root 'scripts'),(Join-Path $root 'docs'),(Join-Path $root 'third-party') -File -Recurse |
         Where-Object { $_.FullName -notmatch '[\\/](bin|obj)[\\/]' } | Select-Object -ExpandProperty FullName
     $sourceStage = Join-Path $dist ('source-' + [Guid]::NewGuid().ToString('N'))
