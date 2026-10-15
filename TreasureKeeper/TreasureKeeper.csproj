@@ -1,0 +1,30 @@
+<Project Sdk="Dalamud.NET.Sdk/13.0.0">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <LangVersion>13.0</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DalamudLibPath Condition="'$(DALAMUD_HOME)' == '' And Exists('$(MSBuildProjectDirectory)/../.sdk/Dalamud.dll')">$(MSBuildProjectDirectory)/../.sdk/</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DALAMUD_HOME)' == '' And !Exists('$(MSBuildProjectDirectory)/../.sdk/Dalamud.dll') And Exists('$(MSBuildProjectDirectory)/../../CrescentCompass/.sdk/Dalamud.dll')">$(MSBuildProjectDirectory)/../../CrescentCompass/.sdk/</DalamudLibPath>
+    <DalamudLibPath Condition="'$(DALAMUD_HOME)' == '' And !Exists('$(MSBuildProjectDirectory)/../.sdk/Dalamud.dll') And !Exists('$(MSBuildProjectDirectory)/../../CrescentCompass/.sdk/Dalamud.dll') And Exists('$(APPDATA)/FFXIVSimpleLauncher/Dalamud/Injector/Dalamud.dll')">$(APPDATA)/FFXIVSimpleLauncher/Dalamud/Injector/</DalamudLibPath>
+    <AssemblySearchPaths>$(DalamudLibPath);{CandidateAssemblyFiles};{HintPathFromItem};{TargetFrameworkDirectory};{RawFileName}</AssemblySearchPaths>
+    <Version>0.1.9</Version>
+    <Authors>TreasureKeeper contributors</Authors>
+    <Description>各寶物庫獨立物品清單、分類與自動丟棄，固定保留深層地圖。</Description>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+    <IsPackable>false</IsPackable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../TreasureKeeper.Core/TreasureKeeper.Core.csproj" />
+    <EmbeddedResource Include="Data/catalog.json" />
+  </ItemGroup>
+  <Target Name="VerifyDalamudApi13" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(DalamudLibPath)/Dalamud.dll')" Text="Set DALAMUD_HOME or DalamudLibPath to an API 13 SDK directory." />
+    <GetAssemblyIdentity AssemblyFiles="$(DalamudLibPath)/Dalamud.dll">
+      <Output TaskParameter="Assemblies" ItemName="DalamudIdentity" />
+    </GetAssemblyIdentity>
+    <Error Condition="$([MSBuild]::VersionLessThan('%(DalamudIdentity.Version)', '13.0')) Or $([MSBuild]::VersionGreaterThanOrEquals('%(DalamudIdentity.Version)', '14.0'))" Text="TreasureKeeper requires Dalamud API 13." />
+  </Target>
+</Project>
