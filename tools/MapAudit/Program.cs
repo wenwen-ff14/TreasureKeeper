@@ -15,6 +15,21 @@ System.Runtime.Loader.AssemblyLoadContext.Default.Resolving += (context, name) =
 Run(args);
 static void Run(string[] args)
 {
+if (args.FirstOrDefault() == "--item-names")
+{
+    using var data = new GameData(args[1], new LuminaOptions { DefaultExcelLanguage = Language.TraditionalChinese });
+    var names = data.GetExcelSheet<Item>()!.Where(i => !string.IsNullOrWhiteSpace(i.Name.ToString()))
+        .ToDictionary(i => i.RowId, i => i.Name.ToString());
+    File.WriteAllText(args[2], JsonSerializer.Serialize(names));
+    return;
+}
+if (args.FirstOrDefault() == "--vaults")
+{
+    using var data = new GameData(args[1], new LuminaOptions { DefaultExcelLanguage = Language.TraditionalChinese });
+    foreach (var row in data.GetExcelSheet<ContentFinderCondition>()!.Where(d => d.ContentType.RowId == 9))
+        Console.WriteLine($"VAULT duty={row.RowId} territory={row.TerritoryType.RowId} map={row.TerritoryType.Value.Map.RowId} name={row.Name}");
+    return;
+}
 if (args.FirstOrDefault() == "--items")
 {
     using var data = new GameData(args[1], new LuminaOptions { DefaultExcelLanguage = Language.TraditionalChinese });

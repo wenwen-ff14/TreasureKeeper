@@ -11,8 +11,8 @@ void Check(bool passed, string name)
 using var file = File.OpenRead(Path.Combine(AppContext.BaseDirectory, "catalog.json"));
 var catalog = TreasureCatalog.Load(file);
 Check(catalog.Vaults.Length == 11, "Ten vaults plus a separate G10 outdoor catalog");
-Check(catalog.Vaults.Count(v => v.Available && !v.IsOutdoor) == 9, "Nine verified local duty territories");
-Check(catalog.Vaults.Single(v => v.Id == 55013).TerritoryId == 0, "Unreleased source territory remains unmapped");
+Check(catalog.Vaults.Count(v => v.Available && !v.IsOutdoor) == 10, "Ten verified local duty territories");
+Check(catalog.Vaults.Single(v => v.Id == 55013) is { TerritoryId: 1279, DutyId: 1060, Name: "尋夢金庫", Available: true }, "G18 matches verified TC duty");
 foreach (var vault in catalog.Vaults)
 {
     Check(vault.Items.All(i => i.Sources.Length > 0), $"Provenance: {vault.Name}");

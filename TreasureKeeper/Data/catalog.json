@@ -12406,7 +12406,7 @@
         },
         {
           "Id": 46105,
-          "Name": "Dumbbell Rack",
+          "Name": "啞鈴架",
           "EnglishName": "Dumbbell Rack",
           "Category": "其他",
           "Available": false,
@@ -12418,7 +12418,7 @@
         },
         {
           "Id": 46106,
-          "Name": "Training Bench",
+          "Name": "訓練椅",
           "EnglishName": "Training Bench",
           "Category": "其他",
           "Available": false,
@@ -12430,7 +12430,7 @@
         },
         {
           "Id": 46147,
-          "Name": "Etched in Memory Orchestrion Roll",
+          "Name": "管弦樂琴樂譜：銘刻的記憶",
           "EnglishName": "Etched in Memory Orchestrion Roll",
           "Category": "樂譜",
           "Available": false,
@@ -12442,7 +12442,7 @@
         },
         {
           "Id": 46261,
-          "Name": "Summerlight Linen",
+          "Name": "薄亞麻布",
           "EnglishName": "Summerlight Linen",
           "Category": "其他",
           "Available": false,
@@ -12454,7 +12454,7 @@
         },
         {
           "Id": 46842,
-          "Name": "The Faces We Wear - Tactical Goggles",
+          "Name": "臉部配件：戰術護目鏡",
           "EnglishName": "The Faces We Wear - Tactical Goggles",
           "Category": "其他",
           "Available": false,
@@ -12466,7 +12466,7 @@
         },
         {
           "Id": 46845,
-          "Name": "The Faces We Wear - Professorial Glasses",
+          "Name": "臉部配件：教授眼鏡",
           "EnglishName": "The Faces We Wear - Professorial Glasses",
           "Category": "其他",
           "Available": false,
@@ -12478,7 +12478,7 @@
         },
         {
           "Id": 46848,
-          "Name": "Torch",
+          "Name": "火把",
           "EnglishName": "Torch",
           "Category": "其他",
           "Available": false,
@@ -12691,12 +12691,12 @@
     },
     {
       "Id": 55013,
-      "TerritoryId": 0,
-      "DutyId": 0,
-      "Name": "Vault Oneiron",
+      "TerritoryId": 1279,
+      "DutyId": 1060,
+      "Name": "尋夢金庫",
       "EnglishName": "Vault Oneiron",
       "Map": "G18",
-      "Available": false,
+      "Available": true,
       "Items": [
         {
           "Id": 41805,
@@ -12829,7 +12829,7 @@
         },
         {
           "Id": 46105,
-          "Name": "Dumbbell Rack",
+          "Name": "啞鈴架",
           "EnglishName": "Dumbbell Rack",
           "Category": "其他",
           "Available": false,
@@ -12842,7 +12842,7 @@
         },
         {
           "Id": 46106,
-          "Name": "Training Bench",
+          "Name": "訓練椅",
           "EnglishName": "Training Bench",
           "Category": "其他",
           "Available": false,
@@ -12855,7 +12855,7 @@
         },
         {
           "Id": 46107,
-          "Name": "Training Mat",
+          "Name": "健身墊",
           "EnglishName": "Training Mat",
           "Category": "其他",
           "Available": false,
@@ -12867,7 +12867,7 @@
         },
         {
           "Id": 46147,
-          "Name": "Etched in Memory Orchestrion Roll",
+          "Name": "管弦樂琴樂譜：銘刻的記憶",
           "EnglishName": "Etched in Memory Orchestrion Roll",
           "Category": "樂譜",
           "Available": false,
@@ -12880,7 +12880,7 @@
         },
         {
           "Id": 46261,
-          "Name": "Summerlight Linen",
+          "Name": "薄亞麻布",
           "EnglishName": "Summerlight Linen",
           "Category": "其他",
           "Available": false,
@@ -12893,7 +12893,7 @@
         },
         {
           "Id": 46773,
-          "Name": "DAM",
+          "Name": "能量飲料GG",
           "EnglishName": "DAM",
           "Category": "其他",
           "Available": false,
@@ -12905,7 +12905,7 @@
         },
         {
           "Id": 46829,
-          "Name": "Yan Horn",
+          "Name": "羊角笛",
           "EnglishName": "Yan Horn",
           "Category": "其他",
           "Available": false,
@@ -12918,7 +12918,7 @@
         },
         {
           "Id": 46842,
-          "Name": "The Faces We Wear - Tactical Goggles",
+          "Name": "臉部配件：戰術護目鏡",
           "EnglishName": "The Faces We Wear - Tactical Goggles",
           "Category": "其他",
           "Available": false,
@@ -12931,7 +12931,7 @@
         },
         {
           "Id": 46845,
-          "Name": "The Faces We Wear - Professorial Glasses",
+          "Name": "臉部配件：教授眼鏡",
           "EnglishName": "The Faces We Wear - Professorial Glasses",
           "Category": "其他",
           "Available": false,
@@ -12943,7 +12943,7 @@
         },
         {
           "Id": 46848,
-          "Name": "Torch",
+          "Name": "火把",
           "EnglishName": "Torch",
           "Category": "其他",
           "Available": false,
@@ -12956,7 +12956,7 @@
         },
         {
           "Id": 47964,
-          "Name": "Mini Yan",
+          "Name": "小小羊",
           "EnglishName": "Mini Yan",
           "Category": "其他",
           "Available": false,
@@ -12969,7 +12969,7 @@
         },
         {
           "Id": 47965,
-          "Name": "Gimme Kitten",
+          "Name": "索取喵",
           "EnglishName": "Gimme Kitten",
           "Category": "其他",
           "Available": false,

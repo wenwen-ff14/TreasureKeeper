@@ -148,7 +148,7 @@ internal static class DiscoveryChecks
             !restored.Selected.Contains(manuallyKept.Id), "Reloaded manual keep is not overwritten by a later first discovery");
         check(DiscoverySelectionPolicy.CanAwaitDiscovery(catalog.Vaults, true, defaults), "Empty selection may arm and await eligible auto-discard discoveries");
         check(!DiscoverySelectionPolicy.CanAwaitDiscovery(catalog.Vaults, false, defaults), "Disabled discovery cannot arm empty cleanup");
-        check(!DiscoverySelectionPolicy.CanAwaitDiscovery(catalog.Vaults, true, new Dictionary<uint, bool> { [17836] = true, [55013] = true }),
+        check(!DiscoverySelectionPolicy.CanAwaitDiscovery(catalog.Vaults.Select(v => v.Id == 55013 ? v with { Available = false } : v).ToArray(), true, new Dictionary<uint, bool> { [17836] = true, [55013] = true }),
             "Outdoor and unavailable vault defaults cannot arm empty cleanup");
         check(!DiscoverySelectionPolicy.CanAwaitDiscovery(catalog.Vaults, true, new Dictionary<uint, bool>()), "Default keep-only settings cannot arm empty cleanup");
     }
